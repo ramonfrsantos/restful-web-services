@@ -1,11 +1,12 @@
 package br.com.practice.rest.webservices.restfulwebservices.user.controller;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.net.URI;
 import java.util.List;
 
 import javax.validation.Valid;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
@@ -28,9 +29,20 @@ public class UserController {
   @Autowired
   private UserDaoService service;
   
+  // @Autowired
+  // private FilteringService filter;
+  
+  // @GetMapping("/users-name")
+  // public MappingJacksonValue retrieveAllUsersName() {
+  //   List<User> users = service.findAll();
+  //   String[] values = {"name"};
+
+  //   return filter.retrieveData(values, users, "UserFilter");
+  // }
+
   @GetMapping("/users")
   public List<User> retrieveAllUsers() {
-    return service.findAll();
+   return service.findAll();
   }
   
   @GetMapping("/users/{id}")
