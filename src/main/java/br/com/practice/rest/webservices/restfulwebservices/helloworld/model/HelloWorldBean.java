@@ -1,4 +1,4 @@
-package br.com.practice.rest.webservices.restfulwebservices.controller;
+package br.com.practice.rest.webservices.restfulwebservices.helloworld.model;
 
 public class HelloWorldBean {
   private String message;

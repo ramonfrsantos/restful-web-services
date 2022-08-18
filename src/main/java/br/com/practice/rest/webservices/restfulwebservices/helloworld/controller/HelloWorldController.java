@@ -1,7 +1,9 @@
-package br.com.practice.rest.webservices.restfulwebservices.controller;
+package br.com.practice.rest.webservices.restfulwebservices.helloworld.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.practice.rest.webservices.restfulwebservices.helloworld.model.HelloWorldBean;
 
 // Controller
 @RestController
