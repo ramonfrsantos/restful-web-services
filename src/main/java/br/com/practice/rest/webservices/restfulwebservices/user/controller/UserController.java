@@ -26,6 +26,7 @@ import br.com.practice.rest.webservices.restfulwebservices.user.model.service.Us
 
 @RestController
 public class UserController {
+  
   @Autowired
   private UserDaoService service;
   
