@@ -6,8 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Post {
+
   @Id
   @GeneratedValue
   private Integer id;
@@ -15,6 +18,7 @@ public class Post {
 
   // não retorna as informações de User se não chamá-lo diretamente
   @ManyToOne(fetch=FetchType.LAZY)
+  @JsonIgnore
   private User user;
   
   public Post(Integer id, String description, User user) {

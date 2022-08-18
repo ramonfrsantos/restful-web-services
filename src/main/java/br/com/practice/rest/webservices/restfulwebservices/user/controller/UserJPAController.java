@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.practice.rest.webservices.restfulwebservices.user.model.domain.Post;
 import br.com.practice.rest.webservices.restfulwebservices.user.model.domain.User;
 import br.com.practice.rest.webservices.restfulwebservices.user.model.exception.UserNotFoundException;
+import br.com.practice.rest.webservices.restfulwebservices.user.model.repository.PostRepository;
 import br.com.practice.rest.webservices.restfulwebservices.user.model.repository.UserRepository;
 
 @RestController
@@ -30,6 +32,9 @@ public class UserJPAController {
   
   @Autowired
   private UserRepository userRepository;
+  
+  @Autowired
+  private PostRepository postRepository;
 
   @GetMapping("/jpa/users")
   public List<User> retrieveAllUsers() {
@@ -64,5 +69,40 @@ public class UserJPAController {
   @DeleteMapping("/jpa/users/{id}")
   public void deleteUser(@PathVariable int id) {
     userRepository.deleteById(id);   
+  }
+
+  @GetMapping("/jpa/users/{id}/posts")
+  public List<Post> retrieveAllPosts(@PathVariable int id) {
+    Optional<User> userOptional = userRepository.findById(id);
+
+    if(!userOptional.isPresent()){
+      throw new UserNotFoundException("id - " + id);
+    }
+
+    return userOptional.get().getPosts();
+  }
+
+  @PostMapping("/jpa/users/{id}/posts")
+  public ResponseEntity<Object> createPostForUser(@RequestBody Post post, @PathVariable int id) {   
+    
+    Optional<User> userOptional = userRepository.findById(id);
+
+    if(!userOptional.isPresent()){
+      throw new UserNotFoundException("id - " + id);
+    }
+
+    User user = userOptional.get();
+
+    post.setUser(user);
+    postRepository.save(post);
+
+    URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(post.getId()).toUri();
+
+    return ResponseEntity.created(location).build();
+  }
+
+  @DeleteMapping("/jpa/users/posts/{id}")
+  public void deletePost(@PathVariable int id) {
+    postRepository.deleteById(id);   
   }
 }
