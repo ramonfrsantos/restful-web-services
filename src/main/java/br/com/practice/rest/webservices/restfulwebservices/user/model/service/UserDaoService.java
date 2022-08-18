@@ -1,4 +1,4 @@
-package br.com.practice.rest.webservices.restfulwebservices.user.service;
+package br.com.practice.rest.webservices.restfulwebservices.user.model.service;
 
 import java.util.ArrayList;
 import java.util.Date;

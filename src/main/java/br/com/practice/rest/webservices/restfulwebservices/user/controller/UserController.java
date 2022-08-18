@@ -14,7 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.practice.rest.webservices.restfulwebservices.user.model.User;
 import br.com.practice.rest.webservices.restfulwebservices.user.model.exception.UserNotFoundException;
-import br.com.practice.rest.webservices.restfulwebservices.user.service.UserDaoService;
+import br.com.practice.rest.webservices.restfulwebservices.user.model.service.UserDaoService;
 
 @RestController
 public class UserController {
