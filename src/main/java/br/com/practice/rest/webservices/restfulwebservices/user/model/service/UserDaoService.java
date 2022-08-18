@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import br.com.practice.rest.webservices.restfulwebservices.user.model.User;
+import br.com.practice.rest.webservices.restfulwebservices.user.model.domain.User;
 
 @Component
 public class UserDaoService {

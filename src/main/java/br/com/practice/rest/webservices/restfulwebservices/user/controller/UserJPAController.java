@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.practice.rest.webservices.restfulwebservices.user.model.User;
+import br.com.practice.rest.webservices.restfulwebservices.user.model.domain.User;
 import br.com.practice.rest.webservices.restfulwebservices.user.model.exception.UserNotFoundException;
 import br.com.practice.rest.webservices.restfulwebservices.user.model.repository.UserRepository;
 
